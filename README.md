@@ -16,7 +16,8 @@ On the right side you have the Unity window with the 3D scene. On the left you h
 Length and angle are used for adding new fences or updating existing ones. 
 Fence ID is used for updating and removing fences only — it does not matter when adding.
 
-Toggle camera button let's you toggle between the two cameras - overview camera and follow camera (follows the fence trajectory). 
+Toggle camera button lets you toggle between the two cameras - overview camera and follow camera (follows the fence trajectory). 
 
+![Preview](media/image.png)
 ## In editor:
 Use [WentureFence instead](https://github.com/Timo654/WentureFence/edit/master/README.md).

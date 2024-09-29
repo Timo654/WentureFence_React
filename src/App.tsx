@@ -62,6 +62,7 @@ const App = () => {
               name="length"
               type="number"
               value={length}
+              min="1"
               onChange={(e) => setLength(Number(e.target.value))}
             />
           </div>
@@ -72,6 +73,8 @@ const App = () => {
               name="angle"
               type="number"
               value={angle}
+              min="0"
+              max="180"
               onChange={(e) => setAngle(Number(e.target.value))}
             />
           </div>
@@ -82,6 +85,7 @@ const App = () => {
               name="fenceID"
               type="number"
               value={fenceID}
+              min="0"
               onChange={(e) => setFenceID(Number(e.target.value))}
             />
           </div>

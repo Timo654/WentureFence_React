@@ -36,6 +36,13 @@ const App = () => {
     sendMessage("Handler", "RemoveFence", `{\"fenceID\": ${fenceID}}`);
   };
 
+  const handleUpdateFence = () => {
+    if (isLoaded === false) {
+      return;
+    }
+    sendMessage("Handler", "UpdateFence", `{\"fenceID\": ${fenceID},\"angle\":${angle},\"length\":${length}}`);
+  };
+
   const handleToggleCameraMode = () => {
     if (isLoaded === false) {
       return;
@@ -46,33 +53,45 @@ const App = () => {
   return (
     <div className="">
       <h1>Fence creator</h1>
-      <Unity unityProvider={unityProvider} style={{ width: 800, height: 600 }} />
+      <div style={{ display: 'flex' }}>
+        <div style={{ marginRight: '20px' }}>
+          <div>
+            <label htmlFor="length">Length: </label>
+            <input
+              id="length"
+              name="length"
+              type="number"
+              value={length}
+              onChange={(e) => setLength(Number(e.target.value))}
+            />
+          </div>
+          <div>
+            <label htmlFor="angle">Angle: </label>
+            <input
+              id="angle"
+              name="angle"
+              type="number"
+              value={angle}
+              onChange={(e) => setAngle(Number(e.target.value))}
+            />
+          </div>
+          <div>
+            <label htmlFor="fenceID">Fence ID (for update/remove): </label>
+            <input
+              id="fenceID"
+              name="fenceID"
+              type="number"
+              value={fenceID}
+              onChange={(e) => setFenceID(Number(e.target.value))}
+            />
+          </div>
+        </div>
+        <Unity unityProvider={unityProvider} style={{ width: 800, height: 600 }} />
+      </div>
       <div className="buttons">
-        <button onClick={() => handleAddFence()}>
-          Add a fence
-        </button>
-        <input
-          name="length"
-          type='number'
-          value={length}
-          onChange={(e) => setLength(Number(e.target.value))}
-        />
-        <input
-          name="angle"
-          type='number'
-          value={angle}
-          onChange={(e) => setAngle(Number(e.target.value))}
-        />
-        <button onClick={() => handleRemoveFence()}>
-          Remove a fence
-        </button>
-        <input
-          name="fenceID"
-          type='number'
-          value={fenceID}
-          onChange={(e) => setFenceID(Number(e.target.value))}
-        />
-
+        <button onClick={() => handleAddFence()}>Add a fence</button>
+        <button onClick={() => handleRemoveFence()}>Remove a fence</button>
+        <button onClick={() => handleUpdateFence()}>Update a fence</button>
         <button onClick={handleToggleCameraMode}>Toggle camera</button>
       </div>
     </div>

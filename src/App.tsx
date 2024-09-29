@@ -6,6 +6,7 @@ const App = () => {
 
   const [length, setLength] = useState(1);
   const [angle, setAngle] = useState(90);
+  const [fenceID, setFenceID] = useState(0);
 
   const {
     unityProvider,
@@ -32,7 +33,7 @@ const App = () => {
     if (isLoaded === false) {
       return;
     }
-    sendMessage("Handler", "RemoveFence", "{}");
+    sendMessage("Handler", "RemoveFence", `{\"fenceID\": ${fenceID}}`);
   };
 
   const handleToggleCameraMode = () => {
@@ -65,6 +66,13 @@ const App = () => {
         <button onClick={() => handleRemoveFence()}>
           Remove a fence
         </button>
+        <input
+          name="fenceID"
+          type='number'
+          value={fenceID}
+          onChange={(e) => setFenceID(Number(e.target.value))}
+        />
+
         <button onClick={handleToggleCameraMode}>Toggle camera</button>
       </div>
     </div>
